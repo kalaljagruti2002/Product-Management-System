@@ -1,0 +1,58 @@
+﻿@model Image_Project.Models.ProductModel
+@{
+    ViewBag.Title = "Index";
+}
+<p>
+    @Html.ActionLink("GoToList", "GetRecord")
+</p>
+<script type="text/javascript">
+    function cal() {
+        var rate = document.getElementById('rate').value;
+        var qty = document.getElementById('qty').value;
+        document.getElementById('tot').value = rate * qty;
+    }
+</script>
+
+
+@using (Html.BeginForm("SaveRecord", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="container" style="background-color:lightyellow;height:600px">
+        <div class="row">
+            <div class="col-md-3">
+                <label>ProductName</label>
+                @Html.HiddenFor(m => m.ProdId, new { @class = "form-control" })
+                @Html.TextBoxFor(m => m.ProdName, new { @class = "form-control" })
+            </div>
+            <div class="col-md-3">
+                <label>ProductRate</label>
+                @Html.TextBoxFor(m => m.ProdRate, new { @class = "form-control", id = "rate", onkeyup = "cal();" })
+            </div>
+            <div class="col-md-3">
+                <label>ProductQty</label>
+                @Html.TextBoxFor(m => m.ProdQty, new { @class = "form-control", id = "qty", onkeyup = "cal();" })
+            </div>
+            <div class="col-md-3">
+                <label>ProductTotal</label>
+                @Html.TextBoxFor(m => m.ProdTotal, new { @class = "form-control", id = "tot" })
+            </div>
+        </div><br/>
+        <div class="row">
+            <div class="col-md-3">
+                <label>ProductImage</label>
+                <input type="file" name="ProdImage" required="required" class="form-control" />
+            </div>
+            <div class="col-md-3">
+                <label>Select Date</label>
+                @Html.TextBoxFor(m => m.Date, new { @class = "form-control", type="date" })
+            </div>
+        </div>
+
+            <br />
+            <div>
+              <button type="submit" class="btn btn-success">SaveData</button>
+
+             </div>
+
+            </div>
+
+        }

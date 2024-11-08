@@ -1,0 +1,105 @@
+﻿@model IEnumerable<Image_Project.dbconnection.Product12>
+
+@{
+    ViewBag.Title = "GetRecord";
+}
+
+<h2>ProductList</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Index")
+</p>
+
+@using (Html.BeginForm("GetRecord", "Product", FormMethod.Post))
+{
+
+    @Html.TextBox("search", "", htmlAttributes: new { @class = "form-control", placeholder = "search Here...", style = "margin-left:900px" })
+    <button type="submit" class="btn btn-primary" style="margin-left:1110px;margin-top:-55px">Search</button>
+}
+@using (Html.BeginForm("GetRecord", "Product", FormMethod.Post))
+{
+
+    <div style="margin-left:200px; margin-bottom:-60px">
+            <label>From Date: </label> <input type="date" name="startDate" class="form-control" />
+    </div>    
+    <div style="margin-left:500px;margin-top:-9px">
+            <label>To Date: </label> <input type="date" name="endDate" class="form-control" />        
+    </div>
+        <button type="submit" class="btn btn-primary" style="margin-left:770px;margin-top:-55px">Search</button>
+        }
+
+        <table class="table" style="margin-top:10px">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.ProdName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ProdRate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ProdQty)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ProdTotal)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ProdImage)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Date)
+                </th>
+                <th>Actions</th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProdName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProdRate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProdQty)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProdTotal)
+                    </td>
+                    <td>
+                        <img src="~/Content/Images/@item.ProdImage" alt="@item.ProdImage" width="100" height="100" />
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Date)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ProdId }, new { @class = "btn btn-warning" }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.ProdId }, new { @class = "btn btn-primary" }) |
+                        <a href="@Url.Action("Delete", "Product", new { id=item.ProdId })" class="btn btn-danger"
+                           onclick="return confirm('Are You Sure to Deleted @item.ProdName ?')">Delete</a>
+                    </td>
+                </tr>
+            }
+
+
+        </table>
+        @{
+            double totalpage = ViewBag.TotalPageNo;
+            for (int i = 1; i <= totalpage; i++)
+            {
+                <ul class="pagination">
+                    @if (i == ViewBag.pageNo)
+                    {
+                        <li class="active">
+                            @Html.ActionLink(i.ToString(), "GetRecord", new { pagenumber = i })
+                        </li>
+                    }
+                    else
+                    {
+                        @Html.ActionLink(i.ToString(), "GetRecord", new { pagenumber = i })
+                    }
+                </ul>
+            }
+        }
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">

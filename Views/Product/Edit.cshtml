@@ -1,0 +1,56 @@
+﻿@model Image_Project.dbconnection.Product12
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+<p>
+    @Html.ActionLink("GoToList", "GetRecord")
+</p>
+<script type="text/javascript">
+    function cal() {
+        var rate = document.getElementById('rate').value;
+        var qty = document.getElementById('qty').value;
+        document.getElementById('tot').value = rate * qty;
+    }
+</script>
+
+
+@using (Html.BeginForm("EditSave", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="row">
+        <div class="col-md-2">
+            <label>ProductName</label>
+            @Html.HiddenFor(m => m.ProdId, new { @class = "form-control" })
+            @Html.TextBoxFor(m => m.ProdName, new { @class = "form-control" })
+        </div>
+        <div class="col-md-2">
+            <label>ProductRate</label>
+            @Html.TextBoxFor(m => m.ProdRate, new { @class = "form-control", id = "rate", onkeyup = "cal();" })
+        </div>
+        <div class="col-md-2">
+            <label>ProductQty</label>
+            @Html.TextBoxFor(m => m.ProdQty, new { @class = "form-control", id = "qty", onkeyup = "cal();" })
+        </div>
+        <div class="col-md-2">
+            <label>ProductTotal</label>
+            @Html.TextBoxFor(m => m.ProdTotal, new { @class = "form-control", id = "tot" })
+        </div>
+        <div class="col-md-2">
+            <label>ProductImage</label>
+            <img src="~/Content/Images/@Model.ProdImage" alt="@Model.ProdImage" width="100" height="100" />
+            <input type="file" name="ProdImage" class="form-control" />
+        </div>
+        <div class="col-md-2">
+            <label>Date</label>
+            @Html.TextBoxFor(m => m.Date, new { @class = "form-control", type="date" })
+        </div>
+    </div>
+    <br />
+    <div>
+        <button type="submit" class="btn btn-success">UpdateData</button>
+    </div>
+}
+
+

@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="JagrutiDBModelStoreContainer" CdmEntityContainer="JagrutiDBEntities">
+    <EntitySetMapping Name="Product12">
+      <EntityTypeMapping TypeName="JagrutiDBModel.Product12">
+        <MappingFragment StoreEntitySet="Product12">
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="ProdId" ColumnName="ProdId" />
+          <ScalarProperty Name="ProdName" ColumnName="ProdName" />
+          <ScalarProperty Name="ProdRate" ColumnName="ProdRate" />
+          <ScalarProperty Name="ProdQty" ColumnName="ProdQty" />
+          <ScalarProperty Name="ProdTotal" ColumnName="ProdTotal" />
+          <ScalarProperty Name="ProdImage" ColumnName="ProdImage" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

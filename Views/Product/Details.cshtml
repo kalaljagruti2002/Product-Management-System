@@ -1,0 +1,64 @@
+﻿@model Image_Project.dbconnection.Product12
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Product12</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ProdName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProdName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProdRate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProdRate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProdQty)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProdQty)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProdTotal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProdTotal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProdImage)
+        </dt>
+
+        <dd>
+            <img src="~/Content/Images/@Model.ProdImage" alt="@Model.ProdImage" width="100" height="100" />
+        </dd>
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ProdId }) |
+    @Html.ActionLink("Back to List", "GetRecord")
+</p>

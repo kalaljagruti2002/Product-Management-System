@@ -1,0 +1,64 @@
+﻿@model Image_Project.dbconnection.Product12
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Product12</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ProdName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProdName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProdRate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProdRate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProdQty)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProdQty)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProdTotal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProdTotal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProdImage)
+        </dt>
+
+        <dd>
+            @Html.ActionLink("Delete", "Delete", new { id = Model.ProdImage}, new { onclick = "return confirm('Are you sure you want to delete this image?');" })
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "GetRecord")
+        </div>
+    }
+</div>
